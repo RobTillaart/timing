@@ -48,22 +48,25 @@ unittest(test_constructor)
 {
   fprintf(stderr, "VERSION: %s\n", TIMING_LIB_VERSION);
   
-  microSeconds mic();
-  assertEqual(0. mic.getOffset());
+  microSeconds mic;
+  assertEqual(0, mic.getOffset());
   mic.set(100);
-  assertEqual(100. mic.getOffset());
+  assertEqual(4294967196, mic.getOffset());  // max uint32_t - 100
 
-  milliSeconds mil();
-  assertEqual(0. mil.getOffset());
+  milliSeconds mil;
+  assertEqual(0, mil.getOffset());
   mil.set(100);
-  assertEqual(100. mil.getOffset());
+  assertEqual(4294967196, mil.getOffset());
 
-  seconds sec();
-  assertEqual(0. sec.getOffset());
+  seconds sec;
+  assertEqual(0, sec.getOffset());
   sec.set(100);
-  assertEqual(100. sec.getOffset());
+  assertEqual(4294967196, sec.getOffset());
 
-  assertEqual(1, 1);
+  fprintf(stderr, "%d\n", mic.now());
+  fprintf(stderr, "%d\n", mil.now());
+  fprintf(stderr, "%d\n", sec.now());
+
 }
 
 unittest_main()
