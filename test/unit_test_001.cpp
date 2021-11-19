@@ -29,6 +29,7 @@
 // assertNAN(arg);                                 // isnan(a)
 // assertNotNAN(arg);                              // !isnan(a)
 
+
 #include <ArduinoUnitTests.h>
 
 #include "Arduino.h"
@@ -46,7 +47,7 @@ unittest_teardown()
 
 unittest(test_constructor)
 {
-  fprintf(stderr, "VERSION: %s\n", TIMING_LIB_VERSION);
+  fprintf(stderr, "VERSION: %s\n", (char *) TIMING_LIB_VERSION);
   
   microSeconds mic;
   assertEqual(0, mic.getOffset());
