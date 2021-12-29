@@ -62,11 +62,16 @@ See examples.
 - test on ESP32
 - nanos() on ESP32 ?
 - implement printable interface (add unit)
-- idea to give it a clock print layout
-- seconds.toClock() -> DD 12:34:56
-- milliSeconds.toClock(3) -> 12:23:45.123    (3) == 3 decimals..
-- milliSeconds.toClock(1) -> 12:23:45.1
-- microSeconds.toCLock() -> 12:23:45.123456  ???
+  - ?
+- implement toClock()
+  - idea to give it a clock print layout
+  - seconds.toClock() -> DD 12:34:56
+  - milliSeconds.toClock(3) -> 12:23:45.123    (3) == 3 decimals..
+  - milliSeconds.toClock(1) -> 12:23:45.1
+  - microSeconds.toCLock()  -> 12:23:45.123456  ???
+- implement toSeconds()
+  - double milliSeconds.toSeconds() -> 45.123
+  - double microSeconds.toSeconds() -> 45.123456
 - update documentation
 - rounding effect, describe
 
