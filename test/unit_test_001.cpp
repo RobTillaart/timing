@@ -38,7 +38,9 @@
 
 unittest_setup()
 {
+  fprintf(stderr, "TIMING_LIB_VERSION: %s\n", (char *) TIMING_LIB_VERSION);
 }
+
 
 unittest_teardown()
 {
@@ -47,8 +49,6 @@ unittest_teardown()
 
 unittest(test_constructor)
 {
-  fprintf(stderr, "VERSION: %s\n", (char *) TIMING_LIB_VERSION);
-  
   microSeconds mic;
   assertEqual(0, mic.getOffset());
   mic.set(100);
@@ -67,9 +67,10 @@ unittest(test_constructor)
   fprintf(stderr, "%d\n", mic.now());
   fprintf(stderr, "%d\n", mil.now());
   fprintf(stderr, "%d\n", sec.now());
-
 }
 
+
 unittest_main()
+
 
 // --------
