@@ -59,6 +59,7 @@ public:
     _now = _now - hh * 3600;
     int mm  = _now / 60;
     int ss = _now - mm * 60;
+    //  ESP32 warning breaks Arduino build. next line.
     sprintf(buf, "%02d:%02d:%02d", hh, mm, ss);
     return buf;
   }
