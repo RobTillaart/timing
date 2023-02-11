@@ -48,6 +48,7 @@ public:
   void set(uint32_t value = 0UL)  { _offset = millis() / 1000UL - value; };
   void add(uint32_t value)        { _offset -= value; };
   uint32_t getOffset()            { return _offset; };
+  //  for completeness
   double toSeconds()              { return millis() * 0.001 - _offset; };
 
   //  experimental

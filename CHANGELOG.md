@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - implement **toSeconds()** -> 45.123 or 45.123456
 - add **add()** to adjust the offset.
 - update keywords.txt
-- some tests on ESP32.
+- test on ESP32.
 - update GitHub actions
 - update license 2023
 

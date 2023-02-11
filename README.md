@@ -1,4 +1,3 @@
-  
 [![Arduino CI](https://github.com/RobTillaart/timing/workflows/Arduino%20CI/badge.svg)](https://github.com/marketplace/actions/arduino_ci)
 [![Arduino-lint](https://github.com/RobTillaart/timing/actions/workflows/arduino-lint.yml/badge.svg)](https://github.com/RobTillaart/timing/actions/workflows/arduino-lint.yml)
 [![JSON check](https://github.com/RobTillaart/timing/actions/workflows/jsoncheck.yml/badge.svg)](https://github.com/RobTillaart/timing/actions/workflows/jsoncheck.yml)
@@ -16,12 +15,12 @@ Arduino library with wrappers for seconds, millis, and micros.
 A request often made on the Arduino forum and otherwise is an option to reset
 the **millis()** function to 0 or to another value.
 
-This library provide wrapper classes around **millis()** and **micros()** 
-with the extra function to do reset the count by means of an offset. 
+This library provide wrapper classes around **millis()** and **micros()**
+with the extra function to do reset the count by means of an offset.
 To implement this only a 4 byte offset is needed per "clock".
 
 The classes are based upon **millis()** and **micros()**.
-Therefore they have the same restrictions as these functions with respect to 
+Therefore they have the same restrictions as these functions with respect to
 overflow and accuracy. Depending on e.g. interrupts, millis() and micros() can drift.
 
 
@@ -32,11 +31,11 @@ overflow and accuracy. Depending on e.g. interrupts, millis() and micros() can d
 |  microSeconds  |  00 days  01:11:34.967296  |  based upon micros()  |
 
 
-#### Tested
+#### Tests
 
-Code is tested on UNO and ESP32.
+Code is tested on UNO and ESP32, should work on all platforms.
 
-No performance tests as code is 'pretty basic'.
+No performance tests as code is 'basic'.
 
 
 ## Applications
@@ -58,21 +57,21 @@ The interface of all three are very similar:
 - **milliSeconds()** constructor, sets the offset so it starts at 0.
 - **seconds()** constructor, sets the offset so it starts at 0.
 - **uint32_t now()** returns the time elapsed since its 'zero moment'.
-Ether set during construction or by a call to **set(0)**. 
-- **void set(uint32_t value = 0UL)** sets the offset of the object. 
+Ether set during construction or by a call to **set(0)**.
+- **void set(uint32_t value = 0UL)** sets the offset of the object.
 As it is possible to set it to a non zero value it is easy to adjust the time.
 This allows one e.g. to compensate for overhead. Default = zero.
 - **void add(uint32_t value)** allows one to increment or decrement the offset for calibration.
-Also allows one to sync the time e.g. with an external reference in small steps.
-(experimental 0.2.5)
-- **uint32_t getOffset()** returns current offset.
-- **double toSeconds()** returns a float representation of the current value.
+Allows one to sync time e.g. with an external reference in small incremental steps.
+- **uint32_t getOffset()** returns current offset in base units.
+So seconds for seconds, millis for millis and micros for micros.
+- **double toSeconds()** returns a float representation of the current value in seconds.
 e.g. 15678 milliseconds becomes 15.678 seconds (SI units).
 
 #### Experimental
 
 - ** char \* toClock()** converts current seconds to a clock like char array "HH:MM:SS".
-Only for the seconds class.
+Only for the seconds class for now.
 
 
 ## Future
@@ -84,7 +83,7 @@ Only for the seconds class.
 
 #### Should
 
-- implement toClock() 
+- implement toClock()
   - seconds.toClock() -> DD 12:34:56  (days ??)
   - milliSeconds.toClock(3) -> 12:23:45.123    (3) == 3 decimals..
   - milliSeconds.toClock(1) -> 12:23:45.1
